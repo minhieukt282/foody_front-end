@@ -55,10 +55,10 @@ function checkNavbar() {
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <a onclick="showHome()" class="nav-item nav-link active">Home</a>
-                        <a class="nav-item nav-link">Products</a>
+                        <a onclick="showProduct()" class="nav-item nav-link">Products</a>
                         <a class="nav-item nav-link">Food</a>
                         <a class="nav-item nav-link">Drink</a>
-                        <a class="nav-item nav-link">Shops</a>
+                        <a onclick="showShop()" class="nav-item nav-link">Shops</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">My cart <i
                                     class="fa fa-angle-down mt-1"></i></a>
@@ -136,10 +136,10 @@ function checkNavbar() {
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <a onclick="showHome()" class="nav-item nav-link active">Home</a> 
-                        <a class="nav-item nav-link">Products</a>
+                        <a onclick="showProduct()" class="nav-item nav-link">Products</a>
                         <a class="nav-item nav-link">Food</a>
                         <a class="nav-item nav-link">Drink</a>
-                        <a class="nav-item nav-link">Shops</a>
+                        <a onclick="showShop()" class="nav-item nav-link">Shops</a>
                     </div>
                 </div>
             </nav>
@@ -149,7 +149,6 @@ function checkNavbar() {
 <!-- Navbar End -->
     `)
     }
-
 }
 
 function logout(){
