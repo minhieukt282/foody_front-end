@@ -62,10 +62,11 @@ function showDetails(slug) {
                                         <small class="fas fa-star-half-alt"></small>
                                         <small class="far fa-star"></small>
                                     </div>
-                                    <small class="pt-1">(99 Reviews)</small>
+                                    <small class="pt-1">(99 Reviews) | Sold ${product.products[0].quantitySold}</small>
                                 </div>
                                 <h3 class="font-weight-semi-bold mb-4">$${product.products[0].price}</h3>
-                                <p class="mb-4">${product.products[0].description}</p>
+                                <p class="mb-4">Description: ${product.products[0].description}</p>
+                                <p class="mb-4">Available: ${product.products[0].status}</p>
                                 <div class="d-flex align-items-center mb-4 pt-2">
                                     <div class="input-group quantity mr-3" style="width: 130px;">
                                         <div class="input-group-btn">
@@ -283,7 +284,7 @@ function getShopProduct(slug) {
             // Authorization: 'Bearer ' + localStorage.getItem(ACCESS_TOKEN)
         },
         success: (shops) => {
-            console.log("detils",shops.details)
+            console.log("detils", shops.details)
             let htmlDetails = ''
             shops.details.products.forEach(item => {
                 htmlDetails += `
@@ -300,6 +301,9 @@ function getShopProduct(slug) {
                     <a class="h6 text-decoration-none text-truncate" onclick="showDetails('${item.slug}')" >${item.name}</a>
                     <div class="d-flex align-items-center justify-content-center mt-2">
                         <h5>$${item.price}</h5>
+                        <h6 class="text-muted ml-2">
+                            Sold ${item.quantitySold}
+                        </h6>
                     </div>
                     <div class="d-flex align-items-center justify-content-center mb-1">
                         <small class="fa fa-star text-primary mr-1"></small>

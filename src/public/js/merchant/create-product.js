@@ -82,7 +82,7 @@ function createProduct() {
             $('#message').html(htmlProduct);
             setTimeout(()=>{
                 showCreateProduct()
-            }, 250)
+            }, 1000)
         }
     })
 }

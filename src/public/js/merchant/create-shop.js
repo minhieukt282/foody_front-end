@@ -29,7 +29,7 @@ function showCreateShop() {
 <!--                        <p class="help-block text-danger"></p>-->
 <!--                    </div>-->
                     <div>
-                        <button class="btn btn-primary py-2 px-4" onclick="createProduct()">Create shop
+                        <button class="btn btn-primary py-2 px-4" onclick="createShop()">Create shop
                         </button>
                     </div>
                
@@ -50,7 +50,7 @@ function showCreateShop() {
     `)
 }
 
-function createProduct() {
+function createShop() {
     let name = $('#name').val()
     let address = $('#address').val()
     let information = $('#information').val()

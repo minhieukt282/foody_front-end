@@ -50,7 +50,7 @@ function checkNavbar() {
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <a onclick="showHomeMerchant()" class="nav-item nav-link active">Home</a>
-                        <a onclick="showCreateProduct()" class="nav-item nav-link">Create Products</a>
+                        <a onclick="showMyShop()" class="nav-item nav-link">My Shop</a>
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown">Create<i
                                     class="fa fa-angle-down mt-1"></i></a>
