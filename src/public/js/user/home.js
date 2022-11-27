@@ -1,5 +1,4 @@
 showHome()
-
 function showHome() {
     $('#body').html(`
  <!-- Categories Start -->

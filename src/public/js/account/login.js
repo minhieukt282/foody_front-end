@@ -58,8 +58,15 @@ function login() {
                 localStorage.setItem("token", token.token)
                 localStorage.setItem("account_id", token.account_id)
                 localStorage.setItem("role", token.role)
-                checkNavbar()
-                showHome()
+                if (+token.role === 2) {
+
+                } else if (+token.role === 1) {
+                    checkNavbar()
+                    showHomeMerchant()
+                } else {
+                    checkNavbar()
+                    showHome()
+                }
             } else {
                 let notification = `<h6 style="color: red">Wrong account or password</h6>`
                 $('#body-notification').html(notification);
