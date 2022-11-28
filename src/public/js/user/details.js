@@ -7,7 +7,7 @@ function showDetails(slug) {
             // Authorization: 'Bearer ' + localStorage.getItem(ACCESS_TOKEN)
         },
         success: (product) => {
-            // console.log(product.products)
+            console.log(product.products)
             let htmlDetails = ''
             htmlDetails += `
             <!-- Breadcrumb Start -->
@@ -68,6 +68,8 @@ function showDetails(slug) {
                                 <input type="hidden" value="${product.products[0]._id}" id="productId">
                                 <input type="hidden" value="${product.products[0].name}" id="name">
                                 <input type="hidden" value="${product.products[0].price}" id="price">
+                                <input type="hidden" value="${product.products[0].account._id}" id="accountShop">
+                                
                                 <p class="mb-4">Description: ${product.products[0].description}</p>
                                 <p class="mb-4">Available: ${product.products[0].status}</p>
                                 <p class="mb-4" id="notification">Notification: non </p>
@@ -172,22 +174,56 @@ function showDetails(slug) {
         }
     })
 }
-function addMyCart(){
+
+function addMyCart() {
     let myCart = JSON.parse(localStorage.getItem("myCart")) ?? []
     let id = $('#productId').val()
     let name = $('#name').val()
     let price = $('#price').val()
     let quantity = $('#quantity').val()
+    let account = $('#accountShop').val()
     let addProducts = {
         id: id,
         name: name,
         price: price,
-        quantity: quantity
+        quantity: quantity,
+        account: account
     }
-    myCart.push(addProducts)
-    localStorage.setItem('myCart', JSON.stringify(myCart))
-    let html = `<h6 class="mb-4" style="color: green">Notification: Add to cart done </h6>`
-    $('#notification').html(html)
+    console.log(addProducts)
+    let checkShop = true
+    for (let i = 0; i < myCart.length; i++) {
+        if (myCart[i].account !== addProducts.account){
+            checkShop = false
+        }
+    }
+    if (checkShop){
+        let status = false
+        for (let i = 0; i < myCart.length; i++) {
+            if (myCart[i].id === addProducts.id) {
+                myCart[i].quantity = +myCart[i].quantity + +addProducts.quantity
+                status = true
+            }
+        }
+        if (status) {
+            localStorage.setItem('myCart', JSON.stringify(myCart))
+        } else {
+            myCart.push(addProducts)
+            localStorage.setItem('myCart', JSON.stringify(myCart))
+        }
+        let html = `<h6 class="mb-4" style="color: green">Notification: Add to cart done </h6>`
+        $('#notification').html(html)
+        setTimeout(() => {
+            html = `<p class="mb-4">Notification: non </p>`
+            $('#notification').html(html)
+        }, 500)
+    } else {
+        let html = `<h6 class="mb-4" style="color: green">Notification: Delete products in your cart then add </h6>`
+        $('#notification').html(html)
+        setTimeout(() => {
+            html = `<p class="mb-4">Notification: non </p>`
+            $('#notification').html(html)
+        }, 500)
+    }
 }
 
 function showShopDetails(slug) {
