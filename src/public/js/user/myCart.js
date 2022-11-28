@@ -95,17 +95,17 @@ function getTotal() {
                             <h5>Total</h5>
                             <h5>$${total}</h5>   
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" onclick="confirm()">Confirm
+                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" onclick="checkout()">Checkout
                         </button>
                     </div>
     `
     $('#total').html(htmlTotal)
 }
 
-function confirm() {
-    let myCart = JSON.parse(localStorage.getItem("myCart")) ?? []
-    console.log(myCart)
-}
+// function checkout() {
+//     let myCart = JSON.parse(localStorage.getItem("myCart")) ?? []
+//     console.log(myCart)
+// }
 
 function removeProduct(index) {
     let myCart = JSON.parse(localStorage.getItem("myCart")) ?? []
