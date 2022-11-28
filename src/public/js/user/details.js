@@ -1,7 +1,7 @@
 function showDetails(slug) {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:3001/details/' + slug,
+        url: 'http://localhost:3001/products/' + slug,
         headers: {
             'Content-Type': 'application/json',
             // Authorization: 'Bearer ' + localStorage.getItem(ACCESS_TOKEN)
@@ -64,24 +64,18 @@ function showDetails(slug) {
                                     </div>
                                     <small class="pt-1">(99 Reviews) | Sold ${product.products[0].quantitySold}</small>
                                 </div>
-                                <h3 class="font-weight-semi-bold mb-4">$${product.products[0].price}</h3>
+                                <h3 class="font-weight-semi-bold mb-4" >$${product.products[0].price}</h3>
+                                <input type="hidden" value="${product.products[0]._id}" id="productId">
+                                <input type="hidden" value="${product.products[0].name}" id="name">
+                                <input type="hidden" value="${product.products[0].price}" id="price">
                                 <p class="mb-4">Description: ${product.products[0].description}</p>
                                 <p class="mb-4">Available: ${product.products[0].status}</p>
+                                <p class="mb-4" id="notification">Notification: non </p>
                                 <div class="d-flex align-items-center mb-4 pt-2">
                                     <div class="input-group quantity mr-3" style="width: 130px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-primary btn-minus">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-primary btn-plus">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
+                                        <input type="text" class="form-control bg-secondary border-0 text-center" value="1" id="quantity">
                                     </div>
-                                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                                    <button class="btn btn-primary px-3" onclick="addMyCart()"><i class="fa fa-shopping-cart mr-1"></i> Add To
                                         Cart</button>
                                 </div>
                                 <div class="d-flex pt-2">
@@ -178,11 +172,28 @@ function showDetails(slug) {
         }
     })
 }
+function addMyCart(){
+    let myCart = JSON.parse(localStorage.getItem("myCart")) ?? []
+    let id = $('#productId').val()
+    let name = $('#name').val()
+    let price = $('#price').val()
+    let quantity = $('#quantity').val()
+    let addProducts = {
+        id: id,
+        name: name,
+        price: price,
+        quantity: quantity
+    }
+    myCart.push(addProducts)
+    localStorage.setItem('myCart', JSON.stringify(myCart))
+    let html = `<h6 class="mb-4" style="color: green">Notification: Add to cart done </h6>`
+    $('#notification').html(html)
+}
 
 function showShopDetails(slug) {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:3001/' + slug,
+        url: 'http://localhost:3001/shops/' + slug,
         headers: {
             'Content-Type': 'application/json',
             // Authorization: 'Bearer ' + localStorage.getItem(ACCESS_TOKEN)
@@ -278,7 +289,7 @@ function showShopDetails(slug) {
 function getShopProduct(slug) {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:3001/' + slug,
+        url: 'http://localhost:3001/shops/' + slug,
         headers: {
             'Content-Type': 'application/json',
             // Authorization: 'Bearer ' + localStorage.getItem(ACCESS_TOKEN)

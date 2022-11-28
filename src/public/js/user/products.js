@@ -1,4 +1,4 @@
-function showProduct(){
+function showProduct() {
     $('#body').html(`
  <!-- Categories Start -->
 <div class="container-fluid pt-5">
@@ -48,7 +48,7 @@ function showProduct(){
     getProduct()
 }
 
-function showShop(){
+function showShop() {
     $('#body').html(`
 <!-- Products Start -->
 <div class="container-fluid pt-5 pb-3">
@@ -59,7 +59,6 @@ function showShop(){
     </div>
 </div>
 <!-- Products End -->
-
     `)
     getShop()
 }

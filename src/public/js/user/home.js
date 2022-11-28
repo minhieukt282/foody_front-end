@@ -1,5 +1,6 @@
 showHome()
 function showHome() {
+
     $('#body').html(`
  <!-- Categories Start -->
 <div class="container-fluid pt-5">

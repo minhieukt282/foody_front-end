@@ -1,5 +1,5 @@
-function showMyCart(){
-    $('#body').html( `
+function showMyCart() {
+    $('#body').html(`
     <!-- OrderDetails Start -->
 <div class="container-fluid">
     <div class="row px-xl-5">
@@ -14,7 +14,9 @@ function showMyCart(){
                     <th>Remove</th>
                 </tr>
                 </thead>
-               
+               <tbody class="align-middle" id="myCart">
+                
+                </tbody>
             </table>
         </div>
         <div class="col-lg-4">
@@ -34,4 +36,38 @@ function showMyCart(){
 </div>
 <!-- OrderDetails End -->
     `)
+    getMyCart()
+}
+
+function getMyCart() {
+    let myCart = JSON.parse(localStorage.getItem("myCart")) ?? []
+    let htmlMyCart = ''
+    myCart.forEach((item, index) => {
+        htmlMyCart += `
+        <tr>
+             <td class="align-middle">${item.name}</td>
+             <td class="align-middle">${item.price}</td>
+             <td class="align-middle">
+                  <div class="input-group quantity mx-auto" style="width: 100px;">
+                       <input type="number" min="1" class="form-control form-control-sm bg-secondary border-0 text-center"
+                                       value="${item.quantity}">
+                  </div>
+             </td>
+             <td class="align-middle">${item.price * item.quantity}</td>
+             <td class="align-middle">
+                 <a class="btn btn-sm btn-danger" onclick="removeProduct('${index}')"><i class="fas fa-times"></i>
+                 </a>
+             </td>
+        </tr>
+        `
+    })
+    $('#myCart').html(htmlMyCart)
+}
+
+function removeProduct(index) {
+    let myCart = JSON.parse(localStorage.getItem("myCart")) ?? []
+    console.log(myCart)
+    myCart.splice(index, 1)
+    localStorage.setItem('myCart', JSON.stringify(myCart))
+    showMyCart()
 }

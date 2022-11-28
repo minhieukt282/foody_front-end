@@ -62,7 +62,7 @@ function createShop() {
     console.log("new shop", newShop)
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:3001/m/create/shops',
+        url: 'http://localhost:3001/m/shops',
         data: JSON.stringify(newShop),
         headers: {
             'Content-Type': 'application/json',

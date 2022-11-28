@@ -71,7 +71,7 @@ function createProduct() {
     console.log(newProduct)
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:3001/m/create',
+        url: 'http://localhost:3001/m/products',
         data: JSON.stringify(newProduct),
         headers: {
             'Content-Type': 'application/json',

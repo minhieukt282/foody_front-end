@@ -45,7 +45,7 @@ function login() {
         username: username,
         password: password
     }
-    console.log(account)
+    // console.log(account)
     $.ajax({
         type: 'POST',
         url: 'http://localhost:3001/login',

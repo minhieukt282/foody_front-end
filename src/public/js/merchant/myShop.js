@@ -1,7 +1,7 @@
 function showMyShop() {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:3001/m/shops/info',
+        url: 'http://localhost:3001/m/my-shops',
         headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + localStorage.getItem('token')
@@ -74,7 +74,7 @@ function showMyShop() {
                         </h6>
                     </div>
                     <div>
-                       <p>Status: ${item.status}</p>
+                       <p>Available: ${item.status}</p>
                     </div>
                 </div>
             </div>
@@ -92,8 +92,8 @@ function showMyShop() {
 function delProduct(slug) {
     console.log(slug)
     $.ajax({
-        type: 'POST',
-        url: 'http://localhost:3001/m/delete/' + slug,
+        type: 'DELETE',
+        url: 'http://localhost:3001/m/' + slug,
         headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + localStorage.getItem('token')
@@ -114,8 +114,8 @@ function updateShop(slug) {
         information: information
     }
     $.ajax({
-        type: 'POST',
-        url: 'http://localhost:3001/m/update/shops/' + slug,
+        type: 'PATCH',
+        url: 'http://localhost:3001/m/shops/' + slug,
         data: JSON.stringify(newInfo),
         headers: {
             'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ function updateShop(slug) {
 function showProductDetails(slug){
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:3001/details/' + slug,
+        url: 'http://localhost:3001/products/' + slug,
         headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + localStorage.getItem('token')
@@ -209,8 +209,8 @@ function updateProduct(slug){
     }
     console.log(newProduct, slug)
     $.ajax({
-        type: 'POST',
-        url: 'http://localhost:3001/m/update/' + slug,
+        type: 'PATCH',
+        url: 'http://localhost:3001/m/' + slug,
         data: JSON.stringify(newProduct),
         headers: {
             'Content-Type': 'application/json',

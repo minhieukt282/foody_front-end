@@ -20,11 +20,13 @@ function checkNavbar() {
         <div class="col-lg-4 col-6 text-left">
             <form action="">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                    <input type="text" class="form-control" placeholder="Search for products" id="keyWord" >
                     <div class="input-group-append">
+                            <button onclick="searchProduct()">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
                             </span>
+                            </button>
                     </div>
                 </div>
             </form>
@@ -59,14 +61,6 @@ function checkNavbar() {
                                 <a onclick="showCreateProduct()" class="dropdown-item">New Products</a>
                             </div>
                         </div>
-                        <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown">Update<i
-                                    class="fa fa-angle-down mt-1"></i></a>
-                            <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                <a class="dropdown-item">My Shop</a>
-                                <a class="dropdown-item">My Products</a>
-                            </div>
-                        </div>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                         <a href="" class="btn px-0 ml-3">
@@ -96,11 +90,13 @@ function checkNavbar() {
         <div class="col-lg-4 col-6 text-left">
             <form action="">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                   <input type="text" class="form-control" placeholder="Search for products" id="keyWord" >
                     <div class="input-group-append">
+                            <button onclick="searchProduct()">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
                             </span>
+                            </button>
                     </div>
                 </div>
             </form>
@@ -175,11 +171,13 @@ function checkNavbar() {
         <div class="col-lg-4 col-6 text-left">
             <form action="">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                   <input type="text" class="form-control" placeholder="Search for products" id="keyWord" >
                     <div class="input-group-append">
+                            <button onclick="searchProduct()">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
                             </span>
+                            </button>
                     </div>
                 </div>
             </form>
@@ -228,6 +226,33 @@ function checkNavbar() {
 <!-- Navbar End -->
     `)
     }
+}
+
+//fix search
+function searchProduct() {
+    let keyWord = $('#keyWord').val()
+    let search = {
+        keyWord: keyWord,
+    }
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3001/search',
+        data: JSON.stringify(search),
+        headers: {
+            'Content-Type': 'application/json',
+            // Authorization: 'Bearer ' + localStorage.getItem(ACCESS_TOKEN)
+        },
+        success: (listProduct) => {
+            // console.log(listProduct)
+            let htmlProduct = ''
+            if (listProduct.status) {
+
+            } else {
+                htmlProduct = `<p>${listProduct.message}</p>`
+                $('#body').html(htmlProduct)
+            }
+        }
+    })
 }
 
 function logout() {
