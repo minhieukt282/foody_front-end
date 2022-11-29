@@ -63,11 +63,11 @@ function getNotification() {
              <td class="align-middle"><a onclick="billsDetails('${listBills.bills[i]._id}')">${listBills.bills[i]._id}</a></td>
              <td class="align-middle">${listBills.bills[i].confirm_bill}</td>
              <td class="align-middle">
-                 <a class="btn btn-sm btn-danger" onclick="changeStatus('${listBills.bills[i]._id}')"><i class="fa fa-check"></i>
+                 <a class="btn btn-sm btn-danger" onclick="acceptBills('${listBills.bills[i]._id}')"><i class="fa fa-check"></i>
                  </a>
              </td>
              <td class="align-middle">
-                 <a class="btn btn-sm btn-danger"><i class="fas fa-times"></i>
+                 <a class="btn btn-sm btn-danger" onclick="rejectBills('${listBills.bills[i]._id}')" ><i class="fas fa-times"></i>
                  </a>
              </td>
         </tr>`
@@ -78,7 +78,7 @@ function getNotification() {
     })
 }
 
-function changeStatus(id) {
+function acceptBills(id) {
     let status = {
         billId: id
     }
@@ -93,6 +93,29 @@ function changeStatus(id) {
         success: (message) => {
             console.log(message)
             let html = `<h6 class="form-control border-0 p-4" >Accept done</h6>`
+            $('#notification').html(html)
+            setTimeout(() => {
+                html = ''
+                $('#notification').html(html)
+                notification()
+            }, 1000)
+
+        }
+    })
+}
+
+function rejectBills(id){
+    console.log(id)
+    $.ajax({
+        type: 'DELETE',
+        url: 'http://localhost:3001/m/bills/' + id,
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+        },
+        success: (message) => {
+            console.log(message)
+            let html = `<h6 class="form-control border-0 p-4" >Reject done</h6>`
             $('#notification').html(html)
             setTimeout(() => {
                 html = ''

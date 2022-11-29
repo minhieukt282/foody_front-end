@@ -18,18 +18,18 @@ function checkNavbar() {
             </a>
         </div>
         <div class="col-lg-4 col-6 text-left">
-            <form action="">
+        
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for products" id="keyWord" >
                     <div class="input-group-append">
-                            <button onclick="searchProduct()">
+                            <button style="border: hidden">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
                             </span>
                             </button>
                     </div>
                 </div>
-            </form>
+            
         </div>
         <div class="col-lg-4 col-6 text-right">
                 <div class="d-inline-flex align-items-center">
@@ -88,18 +88,18 @@ function checkNavbar() {
             </a>
         </div>
         <div class="col-lg-4 col-6 text-left">
-            <form action="">
+          
                 <div class="input-group">
                    <input type="text" class="form-control" placeholder="Search for products" id="keyWord" >
                     <div class="input-group-append">
-                            <button onclick="searchProduct()">
+                            <button onclick="searchProduct()" style="border: hidden">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
                             </span>
                             </button>
                     </div>
                 </div>
-            </form>
+            
         </div>
         <div class="col-lg-4 col-6 text-right">
                 <div class="d-inline-flex align-items-center">
@@ -175,18 +175,18 @@ function checkNavbar() {
             </a>
         </div>
         <div class="col-lg-4 col-6 text-left">
-            <form action="">
+          
                 <div class="input-group">
                    <input type="text" class="form-control" placeholder="Search for products" id="keyWord" >
                     <div class="input-group-append">
-                            <button onclick="searchProduct()">
+                            <button onclick="searchProduct()" style="border: hidden">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
                             </span>
                             </button>
                     </div>
                 </div>
-            </form>
+          
         </div>
         <div class="col-lg-4 col-6 text-right">
 
@@ -252,13 +252,60 @@ function searchProduct() {
             // console.log(listProduct)
             let htmlProduct = ''
             if (listProduct.status) {
-
+                listProduct.products.forEach(item => {
+                    htmlProduct += `
+                <div class="col-lg-2 col-md-4 col-sm-6 pb-1">
+            <div class="product-item bg-light mb-4">
+                <div class="product-img position-relative overflow-hidden">
+                    <img class="img-fluid w-100" src="public/img/product-1.jpg" alt="">
+                    <div class="product-action">
+                        <a class="btn btn-outline-dark btn-square" onclick="showDetails('${item.slug}')"><i class="fa fa-shopping-cart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" onclick="showDetails('${item.slug}')"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="text-center py-4">
+                    <a class="h6 text-decoration-none text-truncate" onclick="showDetails('${item.slug}')" >${item.name}</a>
+                    <div class="d-flex align-items-center justify-content-center mt-2">
+                        <h5>$${item.price} | </h5>
+                        <h6 class="text-muted ml-2">
+                            Sold ${item.quantitySold}
+                        </h6>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center mb-1">
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small>(99)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+                `
+                })
+                showFindProduct(htmlProduct)
             } else {
-                htmlProduct = `<p>${listProduct.message}</p>`
-                $('#body').html(htmlProduct)
+                htmlProduct = `<h5>${listProduct.message}</h5>`
+                showFindProduct(htmlProduct)
             }
         }
     })
+}
+
+function showFindProduct(htmlProduct) {
+    $('#body').html(`
+<!-- Products Start -->
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Products</span>
+    </h2>
+    <div class="row px-xl-5" id="findProduct">
+        ${htmlProduct}
+    </div>
+</div>
+<!-- Products End -->
+    `)
+
 }
 
 function logout() {

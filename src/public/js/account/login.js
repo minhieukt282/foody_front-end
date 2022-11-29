@@ -68,7 +68,7 @@ function login() {
                     showHome()
                 }
             } else {
-                let notification = `<h6 style="color: red">Wrong account or password</h6>`
+                let notification = `<h6 style="color: red">${token.message}</h6>`
                 $('#body-notification').html(notification);
             }
         }
