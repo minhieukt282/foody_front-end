@@ -257,7 +257,7 @@ function showShopDetails(slug) {
                             <div id="product-carousel" class="carousel slide" data-ride="carousel"  >
                                 <div class="carousel-inner bg-light">
                                     <div class="carousel-item active">
-                                        <img class="w-100 h-100" src="public/img/product-1.jpg" alt="Image">
+                                        <img class="w-100 h-100" src="public/img/product-2.jpg" alt="Image">
                                     </div>
                                 </div>
                             </div>
@@ -338,7 +338,7 @@ function getShopProduct(slug) {
                 <div class="col-lg-2 col-md-4 col-sm-6 pb-1">
             <div class="product-item bg-light mb-4">
                 <div class="product-img position-relative overflow-hidden">
-                    <img class="img-fluid w-100" src="public/img/product-1.jpg" alt="">
+                    <img class="img-fluid w-100" src="public/img/product-2.jpg" alt="">
                     <div class="product-action">
                         <a class="btn btn-outline-dark btn-square" onclick="showDetails('${item.slug}')"><i class="fa fa-shopping-cart"></i></a>
                         <a class="btn btn-outline-dark btn-square" onclick="showDetails('${item.slug}')"><i class="fa fa-search"></i></a>

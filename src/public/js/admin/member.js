@@ -120,7 +120,7 @@ function lockMember(username, role) {
         },
         success: (message) => {
             console.log(message)
-            let html = `<h6 class="form-control border-0 p-4" >${message.message}</h6>`
+            let html = `<h6>${message.message}</h6>`
             $('#notification').html(html)
             let status
             if (+role === 0){

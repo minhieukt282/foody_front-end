@@ -44,8 +44,10 @@ function getMyNotice() {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         },
         success: (notice) => {
-            let html = `<h6 >${notice.message}</h6>`
-            $('#notification').html(html)
+            if (notice.notice.length !== 0) {
+                let html = `<h6 >${notice.message}</h6>`
+                $('#notification').html(html)
+            }
         }
     })
 }

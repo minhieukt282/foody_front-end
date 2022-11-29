@@ -4,6 +4,8 @@ function notification() {
 <div class="container-fluid">
     <div class="row px-xl-5" id="billsDetails">
         <div class="col-lg-9 table-responsive mb-5">
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Confirm Bills</span>
+            </h5>
             <table class="table table-light table-borderless table-hover text-center mb-0">
                 <thead class="thead-dark">
                 <tr>

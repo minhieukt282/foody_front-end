@@ -1,9 +1,5 @@
 function upgradeAccount() {
-    let isUpgrade = JSON.parse(localStorage.getItem("upgrade")) ?? []
-    if (isUpgrade.length !== 0) {
-
-    } else {
-        $('#body').html(`
+    $('#body').html(`
       <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-lg-8">
@@ -48,29 +44,47 @@ function upgradeAccount() {
             </div>
         </div>
     </div>`)
-    }
 }
 
-function upgrade() {
+async function upgrade() {
     let userId = localStorage.getItem('account_id')
     let account = {
         userId: userId
     }
-    $.ajax({
-        type: 'POST',
-        url: 'http://localhost:3001/u/merchant/register',
-        data: JSON.stringify(account),
+    let data
+    await $.ajax({
+        type: 'GET',
+        url: 'http://localhost:3001/notice',
         headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + localStorage.getItem('token')
         },
         success: (message) => {
-            let html = `<p style="color: green">${message.message}</p>`
-            $('#notification').html(html)
-            localStorage.setItem('upgrade', userId)
-            setTimeout(() => {
-                showHome()
-            }, 1500)
+            data = message.listNotice
         }
     })
+
+    if (data.length !== 0) {
+        let html = `<p style="color: green">Wait for admin to confirm</p>`
+        $('#notification').html(html)
+    } else {
+        await $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3001/u/merchant/register',
+            data: JSON.stringify(account),
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            },
+            success: (message) => {
+                let html = `<p style="color: green">${message.message}</p>`
+                $('#notification').html(html)
+                setTimeout(() => {
+                    showHome()
+                }, 1500)
+            }
+        })
+    }
+
+
 }

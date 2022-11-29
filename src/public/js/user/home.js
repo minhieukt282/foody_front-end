@@ -63,7 +63,7 @@ function getProduct() {
                 <div class="col-lg-2 col-md-4 col-sm-6 pb-1">
             <div class="product-item bg-light mb-4">
                 <div class="product-img position-relative overflow-hidden">
-                    <img class="img-fluid w-100" src="public/img/product-1.jpg" alt="">
+                    <img class="img-fluid w-100" src="public/img/product-2.jpg" alt="">
                     <div class="product-action">
                         <a class="btn btn-outline-dark btn-square" onclick="showDetails('${item.slug}')"><i class="fa fa-shopping-cart"></i></a>
                         <a class="btn btn-outline-dark btn-square" onclick="showDetails('${item.slug}')"><i class="fa fa-search"></i></a>
@@ -111,7 +111,7 @@ function getShop() {
                 <div class="col-lg-2 col-md-4 col-sm-6 pb-1">
             <div class="product-item bg-light mb-4">
                 <div class="product-img position-relative overflow-hidden">
-                    <img class="img-fluid w-100" src="public/img/product-1.jpg" alt="">
+                    <img class="img-fluid w-100" src="public/img/product-2.jpg" alt="">
                 </div>
                 <div class="text-center py-4">
                     <a class="h6 text-decoration-none text-truncate" onclick="showShopDetails('${item.slug}')" style="color: sandybrown">${item.nameShop}</a>

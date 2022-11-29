@@ -213,7 +213,7 @@ function checkNavbar() {
                                     class="fa fa-angle-down mt-1"></i></a>
                             <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                 <a onclick="upgradeAccount()" class="dropdown-item">Upgrade</a>
-<!--                                <a class="dropdown-item">Change password</a>-->
+                                
                             </div>
                         </div>
                         
@@ -333,7 +333,7 @@ function searchProduct() {
                 <div class="col-lg-2 col-md-4 col-sm-6 pb-1">
             <div class="product-item bg-light mb-4">
                 <div class="product-img position-relative overflow-hidden">
-                    <img class="img-fluid w-100" src="public/img/product-1.jpg" alt="">
+                    <img class="img-fluid w-100" src="public/img/product-2.jpg" alt="">
                     <div class="product-action">
                         <a class="btn btn-outline-dark btn-square" onclick="showDetails('${item.slug}')"><i class="fa fa-shopping-cart"></i></a>
                         <a class="btn btn-outline-dark btn-square" onclick="showDetails('${item.slug}')"><i class="fa fa-search"></i></a>
