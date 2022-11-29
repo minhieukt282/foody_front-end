@@ -24,7 +24,7 @@ function showMyNotification(){
          <div class="col-lg-3">
             <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Notification</span>
             </h5>
-            <div class="bg-light p-30 mb-4" id="notification">
+            <div class="bg-light p-30 mb-4" id="notification" style="width: 100%; height: 100px;">
                     
             </div>
         </div>

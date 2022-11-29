@@ -19,17 +19,11 @@ function showMyCart() {
                 </tbody>
             </table>
         </div>
-         <div class="col-lg-4">
-           
-                <div class="input-group" id="notification">
-                    <h6 class="form-control border-0 p-4" >Notification: non</h6>
-                </div>
-                <h5 class=" text-uppercase mb-3"></h5>
-          
-                <div class="input-group">
-                    <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary">Apply Coupon</button>
+        <div class="col-lg-4">
+                <div class="mb-5">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Notification</span></h5>
+                    <div class="bg-light p-30" id="notification" style="width: 100%; height: 100px;">
+                        
                     </div>
                 </div>
              <h5 class=" text-uppercase mb-3"></h5>
@@ -113,11 +107,11 @@ function removeProduct(index) {
     myCart.splice(index, 1)
     localStorage.setItem('myCart', JSON.stringify(myCart))
     showMyCart()
-    let html = `<h6 class="form-control border-0 p-4" >Notification: Remove done</h6>`
+    let html = `<p style="color: green">Remove done</p>`
     $('#notification').html(html)
     setTimeout(() => {
-        html = ` <h6 class="form-control border-0 p-4" >Notification: non</h6>`
+        html = ''
         $('#notification').html(html)
-    }, 500)
+    }, 1500)
 
 }

@@ -3,12 +3,12 @@ function checkout() {
     if (myCart.length !== 0) {
         showFromCheckOut()
     } else {
-        let html = `<h6 class="form-control border-0 p-4" >You have no products to checkout</h6>`
+        let html = `<p style="color: green">You have no products to checkout</p>`
         $('#notification').html(html)
         setTimeout(() => {
-            html = ` <h6 class="form-control border-0 p-4" >Notification: non</h6>`
+            html = ''
             $('#notification').html(html)
-        }, 500)
+        }, 1500)
     }
 }
 
@@ -34,6 +34,12 @@ function showFromCheckOut() {
              
             </div>
             <div class="col-lg-4">
+                <div class="mb-5">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Notification</span></h5>
+                    <div class="bg-light p-30" id="notification">
+                        
+                    </div>
+                </div>
                 <div class="mb-5">
                     <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Payment</span></h5>
                     <div class="bg-light p-30">
@@ -99,8 +105,14 @@ function confirm() {
         success: (message) => {
             localStorage.removeItem("myCart");
             console.log("message", message.newBill)
-            // getNotification(message.newBill)
-            // showHome()
+            let html = ""
+            html = `<p style="color: green">${message.message}</p>
+                    <p style="color: green">Navigate to home page in 3 seconds</p>`
+            $('#notification').html(html)
+            setTimeout(() => {
+                showHome()
+            }, 3000)
+
         }
     })
 }
