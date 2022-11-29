@@ -5,7 +5,74 @@ function checkNavbar() {
     let role = +localStorage.getItem('role')
     if (token) {
         if (role === 2) {
+            $('#navbar').html(`
+    <!-- Topbar Start -->
+<div class="container-fluid">
+    <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+        <div class="col-lg-4">
+            <a class="text-decoration-none" onclick="showHomeAdmin()">
+                <span class="h1 text-uppercase text-primary bg-dark px-2">Wel</span>
+                <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Admin</span>
+            </a>
+        </div>
+        <div class="col-lg-4 col-6 text-left">
+        
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for products" id="keyWord" >
+                    <div class="input-group-append">
+                            <button style="border: hidden">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            </button>
+                    </div>
+                </div>
+            
+        </div>
+        <div class="col-lg-4 col-6 text-right">
+                <div class="d-inline-flex align-items-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
 
+<!-- Navbar Start -->
+<div class="container-fluid bg-dark mb-30">
+    <div class="row px-xl-5">
+        <div class="col-lg-4 d-none d-lg-block">
+        </div>
+        <div class="col-lg-8">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a onclick="showHomeAdmin()" class="nav-item nav-link active">Home</a>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown">Member<i
+                                    class="fa fa-angle-down mt-1"></i></a>
+                            <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                <a onclick="showMember('MERCHANTS')" class="dropdown-item">Merchants</a>
+                                <a onclick="showMember('USERS')" class="dropdown-item">Users</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                        <a onclick="adminNotification()" class="btn px-0 ml-3">
+                            <i class="fa fa-bell text-primary"></i>
+                            <span class="badge text-secondary border border-secondary rounded-circle"
+                                  style="padding-bottom: 2px;"></span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+    `)
         } else if (role === 1) {
             $('#navbar').html(`
     <!-- Topbar Start -->

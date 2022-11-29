@@ -59,7 +59,8 @@ function login() {
                 localStorage.setItem("account_id", token.account_id)
                 localStorage.setItem("role", token.role)
                 if (+token.role === 2) {
-
+                    checkNavbar()
+                    showHomeAdmin()
                 } else if (+token.role === 1) {
                     checkNavbar()
                     showHomeMerchant()
