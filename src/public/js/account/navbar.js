@@ -205,13 +205,22 @@ function checkNavbar() {
                                     class="fa fa-angle-down mt-1"></i></a>
                             <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                 <a onclick="showMyCart()" class="dropdown-item">My cart</a>
-                                <a class="dropdown-item">History</a>
+                                <a onclick="showMyHistory()" class="dropdown-item">Hisory</a>
                             </div>
                         </div>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown">Account <i
+                                    class="fa fa-angle-down mt-1"></i></a>
+                            <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                <a onclick="upgradeAccount()" class="dropdown-item">Upgrade</a>
+<!--                                <a class="dropdown-item">Change password</a>-->
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                     
-                        <a class="btn px-0 ml-3" onclick="showMyNotification()">
+                        <a class="btn px-0 ml-3" onclick="showMyNotice()">
                             <i class="fa fa-bell text-primary"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle"
                                   style="padding-bottom: 2px;"></span>

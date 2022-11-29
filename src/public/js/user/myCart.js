@@ -107,7 +107,7 @@ function removeProduct(index) {
     myCart.splice(index, 1)
     localStorage.setItem('myCart', JSON.stringify(myCart))
     showMyCart()
-    let html = `<p style="color: green">Remove done</p>`
+    let html = `<h6 style="color: green">Remove done</h6>`
     $('#notification').html(html)
     setTimeout(() => {
         html = ''

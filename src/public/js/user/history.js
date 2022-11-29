@@ -1,4 +1,4 @@
-function showMyNotification() {
+function showMyHistory() {
     $('#body').html(`
     <!-- OrderDetails Start -->
 <div class="container-fluid">
@@ -59,7 +59,7 @@ function getMyBill() {
                 }
             $('#billData').html(htmlBillData)
             } else {
-                let html = `<h6 class="form-control border-0 p-4" >${listBills.message}</h6>`
+                let html = `<h6 >${listBills.message}</h6>`
                 $('#notification').html(html)
             }
         }
@@ -115,7 +115,7 @@ function myBillsDetails(id){
             <div class="bg-light p-30 mb-4" id="notification" style="width: 100%; height: 100px;">
                     
             </div>
-            <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" onclick="showMyNotification()">Back
+            <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" onclick="showMyHistory()">Back
             </button>
         </div> `
             $('#myBillsDetails').html(htmlBillsDetails)

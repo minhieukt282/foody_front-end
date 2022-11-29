@@ -92,7 +92,7 @@ function acceptBills(id) {
         },
         success: (message) => {
             console.log(message)
-            let html = `<h6 class="form-control border-0 p-4" >Accept done</h6>`
+            let html = `<h6 >Accept done</h6>`
             $('#notification').html(html)
             setTimeout(() => {
                 html = ''
@@ -115,7 +115,7 @@ function rejectBills(id){
         },
         success: (message) => {
             console.log(message)
-            let html = `<h6 class="form-control border-0 p-4" >Reject done</h6>`
+            let html = `<h6 >Reject done</h6>`
             $('#notification').html(html)
             setTimeout(() => {
                 html = ''
