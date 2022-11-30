@@ -22,8 +22,6 @@ function showHomeAdmin() {
             <div class="bg-light p-30 mb-5" id="total">
                 <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" onclick="findProduct()">Best Products
                 </button>
-                <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" onclick="findProduct()">Best Products
-                </button>
             </div>
         </div>
     </div>

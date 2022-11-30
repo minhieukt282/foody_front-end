@@ -143,6 +143,8 @@ function billsDetails(id) {
             let htmlBillsDetails = ''
             htmlBillsDetails += `
             <div class="col-lg-9 table-responsive mb-5">
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Details</span>
+            </h5>
             <table class="table table-light table-borderless table-hover text-center mb-0">
                 <thead class="thead-dark">
                 <tr>

@@ -5,7 +5,7 @@ function showLogin() {
         <div class="col-lg-5">
             </h5>
             <div class="bg-light p-30 mb-5">
-            img
+                
             </div>
         </div>
         <div class="col-lg-7 table-responsive mb-5">

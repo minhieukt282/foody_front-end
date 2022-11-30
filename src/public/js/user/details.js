@@ -176,54 +176,59 @@ function showDetails(slug) {
 }
 
 function addMyCart() {
-    let myCart = JSON.parse(localStorage.getItem("myCart")) ?? []
-    let id = $('#productId').val()
-    let name = $('#name').val()
-    let price = $('#price').val()
-    let quantity = $('#quantity').val()
-    let account = $('#accountShop').val()
-    let addProducts = {
-        id: id,
-        name: name,
-        price: price,
-        quantity: quantity,
-        account: account
-    }
-    console.log(addProducts)
-    let checkShop = true
-    for (let i = 0; i < myCart.length; i++) {
-        if (myCart[i].account !== addProducts.account){
-            checkShop = false
+    // let token = JSON.parse(localStorage.getItem("token"))
+    // if (token.length !== 0){
+        let myCart = JSON.parse(localStorage.getItem("myCart")) ?? []
+        let id = $('#productId').val()
+        let name = $('#name').val()
+        let price = $('#price').val()
+        let quantity = $('#quantity').val()
+        let account = $('#accountShop').val()
+        let addProducts = {
+            id: id,
+            name: name,
+            price: price,
+            quantity: quantity,
+            account: account
         }
-    }
-    if (checkShop){
-        let status = false
+        console.log(addProducts)
+        let checkShop = true
         for (let i = 0; i < myCart.length; i++) {
-            if (myCart[i].id === addProducts.id) {
-                myCart[i].quantity = +myCart[i].quantity + +addProducts.quantity
-                status = true
+            if (myCart[i].account !== addProducts.account){
+                checkShop = false
             }
         }
-        if (status) {
-            localStorage.setItem('myCart', JSON.stringify(myCart))
+        if (checkShop){
+            let status = false
+            for (let i = 0; i < myCart.length; i++) {
+                if (myCart[i].id === addProducts.id) {
+                    myCart[i].quantity = +myCart[i].quantity + +addProducts.quantity
+                    status = true
+                }
+            }
+            if (status) {
+                localStorage.setItem('myCart', JSON.stringify(myCart))
+            } else {
+                myCart.push(addProducts)
+                localStorage.setItem('myCart', JSON.stringify(myCart))
+            }
+            let html = `<h6 class="mb-4" style="color: green">Notification: Add to cart done </h6>`
+            $('#notification').html(html)
+            setTimeout(() => {
+                html = `<p class="mb-4">Notification: non </p>`
+                $('#notification').html(html)
+            }, 500)
         } else {
-            myCart.push(addProducts)
-            localStorage.setItem('myCart', JSON.stringify(myCart))
+            let html = `<h6 class="mb-4" style="color: green">Notification: Delete products in your cart then add </h6>`
+            $('#notification').html(html)
+            setTimeout(() => {
+                html = `<p class="mb-4">Notification: non </p>`
+                $('#notification').html(html)
+            }, 500)
         }
-        let html = `<h6 class="mb-4" style="color: green">Notification: Add to cart done </h6>`
-        $('#notification').html(html)
-        setTimeout(() => {
-            html = `<p class="mb-4">Notification: non </p>`
-            $('#notification').html(html)
-        }, 500)
-    } else {
-        let html = `<h6 class="mb-4" style="color: green">Notification: Delete products in your cart then add </h6>`
-        $('#notification').html(html)
-        setTimeout(() => {
-            html = `<p class="mb-4">Notification: non </p>`
-            $('#notification').html(html)
-        }, 500)
-    }
+    // } else {
+    //     showLogin()
+    // }
 }
 
 function showShopDetails(slug) {

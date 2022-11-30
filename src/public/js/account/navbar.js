@@ -58,6 +58,7 @@ function checkNavbar() {
                                 <a onclick="showMember('USERS')" class="dropdown-item">Users</a>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                         <a onclick="adminNotification()" class="btn px-0 ml-3">
